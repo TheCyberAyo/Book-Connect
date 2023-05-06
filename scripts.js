@@ -5,6 +5,9 @@ import {
   authors
   } from "./data.js";
 
+  import {
+    changeTheme
+  } from './function.js'
 
   /**
  * Check if the 'books' variable is valid.
@@ -17,53 +20,6 @@ if (!books || !Array.isArray(books)) {
     
 const matches = books //@type (array)
 let page = 1; //@type (number)
-
-/**
-*@type {object} for setting color theme 
-*/
-
-const day = {
-    dark: '10, 10, 20',
-    light: '255, 255, 255',
-}
-
-const night = {
-    dark: '255, 255, 255',
-    light: '10, 10, 20',
-}
-
-/**
- * The theme selector element.
- * @type {HTMLElement}
- * all 3 below
- */
-const themeSelector = document.querySelector('[data-settings-theme]');
-const cancelButton = document.querySelector('[data-settings-cancel]');
-const saveButton = document.querySelector('#save-button');
-
-//Event listener for the theme selector element.
-themeSelector.addEventListener('change', () => {
-  const selectedTheme = themeSelector.value;
-
-  if (selectedTheme === 'day') {
-    setTheme(day);
-    cancelButton.disabled = false;
-    saveButton.disabled = true;
-  } else {
-    setTheme(night);
-    cancelButton.disabled = true;
-    saveButton.disabled = false;
-  }
-});
-
-/**
- * Sets the color theme for the page.
- * @param {Object} theme - The color theme object to apply.
- */
-function setTheme(theme) {
-  document.documentElement.style.setProperty('--bg-color', `rgb(${theme.bg})`);
-  document.documentElement.style.setProperty('--text-color', `rgb(${theme.text})`);
-}
 
 /**
  * The HTML fragment for the imported books.
@@ -218,3 +174,48 @@ searchButton.addEventListener("click",(event) => {
     }
   
 });
+
+/**
+ * This variable is the dialog box for the light/dark toggle overlay
+ */
+export const lightToggleDialog = data.theme.overlay;
+
+lightToggleDialog.innerHTML = /*html*/
+	`<div class="overlay__content">
+                          <form class="overlay__form" data-settings-form="" id="settings">
+                          <label class="overlay__field">
+                            <div class="overlay__label">Theme</div>
+
+                            <select class="overlay__input overlay__input_select" data-settings-theme="" name="theme">
+                              <option value="day">Day</option>
+                              <option value="night">Night</option>
+                            </select>
+                          </label>
+                          </form>
+
+                          <div class="overlay__row">
+                          <button class="overlay__button" data-settings-cancel="">Cancel</button>
+                          <button class="overlay__button overlay__button_primary" type="submit" form="settings">Save</button>
+                          </div>
+                          </div>`
+
+
+
+
+const lightToggleBtn = data.home.theme //top button for theme
+
+lightToggleBtn.addEventListener("click", (event) => {  //This is the event listener shows the light/dark toggle overlay
+	event.preventDefault();
+	lightToggleDialog.showModal();
+})
+
+const toggleCancelBtn = lightToggleDialog.querySelectorAll('button')[0]
+const toggleSaveBtn = lightToggleDialog.querySelectorAll('button')[1];
+toggleSaveBtn.addEventListener("click", changeTheme)
+/* event listener for cancel button to reomve overlay */
+toggleCancelBtn.addEventListener("click", (event) => {
+	event.preventDefault();
+  
+	lightToggleDialog.close();
+
+})
