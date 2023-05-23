@@ -25,7 +25,7 @@ let page = 1; //@type (number)
  * The HTML fragment for the imported books.
  * @type {DocumentFragment}
  */
-const fragment = document.createDocumentFragment() //create an HTML fragment for the imported books
+export const fragment = document.createDocumentFragment() //create an HTML fragment for the imported books
 const extracted = books.slice(0, 36)  //To show 36 books at a time
 
 /**
@@ -128,7 +128,6 @@ const descriptionOverlay = (event) => {
         }
     }
 
-  
 }
 
 document.addEventListener("click", appendBooks(books))
@@ -182,22 +181,22 @@ export const lightToggleDialog = data.theme.overlay;
 
 lightToggleDialog.innerHTML = /*html*/
 	`<div class="overlay__content">
-                          <form class="overlay__form" data-settings-form="" id="settings">
-                          <label class="overlay__field">
-                            <div class="overlay__label">Theme</div>
+    <form class="overlay__form" data-settings-form="" id="settings">
+      <label class="overlay__field">
+          <div class="overlay__label">Theme</div>
 
-                            <select class="overlay__input overlay__input_select" data-settings-theme="" name="theme">
-                              <option value="day">Day</option>
-                              <option value="night">Night</option>
-                            </select>
-                          </label>
-                          </form>
+              <select class="overlay__input overlay__input_select" data-settings-theme="" name="theme">
+                  <option value="day">Day</option>
+                  <option value="night">Night</option>
+              </select>
+      </label>
+    </form>
 
-                          <div class="overlay__row">
-                          <button class="overlay__button" data-settings-cancel="">Cancel</button>
-                          <button class="overlay__button overlay__button_primary" type="submit" form="settings">Save</button>
-                          </div>
-                          </div>`
+    <div class="overlay__row">
+      <button class="overlay__button" data-settings-cancel="">Cancel</button>
+          <button class="overlay__button overlay__button_primary" type="submit" form="settings">Save</button>
+    </div>
+  </div>`
 
 
 
@@ -212,7 +211,7 @@ lightToggleBtn.addEventListener("click", (event) => {  //This is the event liste
 const toggleCancelBtn = lightToggleDialog.querySelectorAll('button')[0]
 const toggleSaveBtn = lightToggleDialog.querySelectorAll('button')[1];
 toggleSaveBtn.addEventListener("click", changeTheme)
-/* event listener for cancel button to reomve overlay */
+/* event listener for cancel button to remove overlay */
 toggleCancelBtn.addEventListener("click", (event) => {
 	event.preventDefault();
   
