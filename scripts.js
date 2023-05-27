@@ -1,84 +1,84 @@
-// import {  
-//   BOOKS_PER_PAGE,
-//   books, 
-//   genres, 
-//   authors
-//   } from "./data.js";
+import {  
+  BOOKS_PER_PAGE,
+  books, 
+  genres, 
+  authors
+  } from "./data.js";
 
-//   import {
-//     changeTheme
-//   } from './function.js'
+  import {
+    changeTheme
+  } from './function.js'
 
-//   /**
-//  * Check if the 'books' variable is valid.
-//  * @throws {Error} If 'books' is invalid.
-//  */
+  /**
+ * Check if the 'books' variable is valid.
+ * @throws {Error} If 'books' is invalid.
+ */
 
-// if (!books || !Array.isArray(books)) {
-//   throw new Error('Source required');
-// }
+if (!books || !Array.isArray(books)) {
+  throw new Error('Source required');
+}
     
-// const matches = books //@type (array)
-// let page = 1; //@type (number)
+const matches = books //@type (array)
+let page = 1; //@type (number)
 
-// /**
-//  * The HTML fragment for the imported books.
-//  * @type {DocumentFragment}
-//  */
-// export const fragment = document.createDocumentFragment() //create an HTML fragment for the imported books
-// const extracted = books.slice(0, 36)  //To show 36 books at a time
+/**
+ * The HTML fragment for the imported books.
+ * @type {DocumentFragment}
+ */
+export const fragment = document.createDocumentFragment() //create an HTML fragment for the imported books
+const extracted = books.slice(0, 36)  //To show 36 books at a time
 
-// /**
-//  * The first 36 books to be shown.
-//  * @type {Array}
-//  */
-// const moreBooks = document.querySelector('[data-list-button]'); //scroll-down button
-// moreBooks.setAttribute("style", "color: rgba(217, 35, 255)"); // button text color
+/**
+ * The first 36 books to be shown.
+ * @type {Array}
+ */
+const moreBooks = document.querySelector('[data-list-button]'); //scroll-down button
+moreBooks.setAttribute("style", "color: rgba(217, 35, 255)"); // button text color
 
-// /**
-//  * To show books left to of the whole package
-//  * shows as a number on the 'moreBooks' button
-//  * @returns { number } 
-//  */
-// const remaingBooks = () => {
-// const currentBooks = document.querySelectorAll('preview'); 
-// const allSeenBooks = currentBooks.length;
-// //subtract books on page from total books in object
-// const remaining = books.length - allSeenBooks;
-// //add the text to the button element
-// return remaining
-//    }
+/**
+ * To show books left to of the whole package
+ * shows as a number on the 'moreBooks' button
+ * @returns { number } 
+ */
+const remaingBooks = () => {
+const currentBooks = document.querySelectorAll('preview'); 
+const allSeenBooks = currentBooks.length;
+//subtract books on page from total books in object
+const remaining = books.length - allSeenBooks;
+//add the text to the button element
+return remaining
+   }
 
 
-// /**
-//  * This function loads the home page of the website with 
-//  * the books shown in a list of 36 at a time.
-//  * @param {imported object} books 
-//  */
-// const appendBooks = (books) => {
+/**
+ * This function loads the home page of the website with 
+ * the books shown in a list of 36 at a time.
+ * @param {imported object} books 
+ */
+const appendBooks = (books) => {
 
-//     for (let i = 0; i < BOOKS_PER_PAGE; i++) {
+    for (let i = 0; i < BOOKS_PER_PAGE; i++) {
         
-//         const book = books[i]; //get the books from index 0 in the books object  
-//         const button = document.createElement('button'); //button for books so each book is in its own card
-//           button.classList.add('preview'); //create a class and call it preview
-//           button.dataset.preview = book.id;
+        const book = books[i]; //get the books from index 0 in the books object  
+        const button = document.createElement('button'); //button for books so each book is in its own card
+          button.classList.add('preview'); //create a class and call it preview
+          button.dataset.preview = book.id;
 
-//       button.innerHTML =/* HTML markup for the book cards */
-//       `
-//        <img class="preview__image" src="${book.image}" />
-//        <div class="preview__info">
-//          <h3 class="preview__title">${book.title}</h3>
-//          <div class="preview__author">${authors[book.author]}</div>
-//          <div class="preview__date">${""}</div>
-//        </div>
-//      `;
+      button.innerHTML =/* HTML markup for the book cards */
+      `
+       <img class="preview__image" src="${book.image}" />
+       <div class="preview__info">
+         <h3 class="preview__title">${book.title}</h3>
+         <div class="preview__author">${authors[book.author]}</div>
+         <div class="preview__date">${""}</div>
+       </div>
+     `;
      
     
-//     fragment.appendChild(button); // Append the button to the fragment.
-// }
+    fragment.appendChild(button); // Append the button to the fragment.
+}
 
-//      document.querySelector('[data-list-items]').appendChild(fragment);
+     document.querySelector('[data-list-items]').appendChild(fragment);
 
 // moreBooks.innerHTML = `Show more`
 //     }
