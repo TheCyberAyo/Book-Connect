@@ -3,10 +3,10 @@
 Welcome to my BOOK CONNECT repository! This web application allows you to find your book of choice from a virtual book collection.
 
 #### Features
-**Visual appearence:** The website initially shows 36 books on screen, and when you click 'show more', 36 more books will be added on the current collection, and so on.
-**Search:** Search for books in the collection using keywords, titles, genre, or authors to quickly find what you're looking for.
+- **Visual appearence:** The website initially shows 36 books on screen, and when you click 'show more', 36 more books will be added on the current collection, and so on.
+- **Search:** Search for books in the collection using keywords, titles, genre, or authors to quickly find what you're looking for.
 Filter: 
-**Dark Mode**: Enhance your reading experience with the newly added Dark Mode feature. Switch to a darker color scheme to reduce eye strain and enjoy a more comfortable reading environment. Simply toggle the Dark Mode switch in the settings menu to activate this feature.
+- **Dark Mode**: Enhance your reading experience with the newly added Dark Mode feature. Switch to a darker color scheme to reduce eye strain and enjoy a more comfortable reading environment. Simply toggle the Dark Mode switch in the settings menu to activate this feature.
 
 To get started with the Online Bookshelf application, follow these steps:
 
