@@ -186,5 +186,3 @@ renderFilters();
 initTheme();
 renderBooks(matches);
 updateShowMoreButton();
-
-
